@@ -1,0 +1,20 @@
+
+<form name="TheVOXInventory">
+    <input name="Category" type="category" placeholder="Category" required>
+    <input name="Name" type="name" placeholder="Name" required>
+    <input name="Quantity" type="quantity" placeholder="Qty" required>
+    <input name="Location" type="location" placeholder="Location" required>
+    <button type="submit">Send</button>
+  </form>
+  
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwRbPMUwxofmxNXJqvTapyRM5PWsc2ZmwCEldaeEOkCPACXKj08qNafehIACtftgaM7/exec'
+    const form = document.forms['TheVOXInventory']
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => console.log('Success!', response))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
